@@ -2,12 +2,25 @@
 #include <iostream>
 #include <vector>
 
+struct Dummy {
+  int a;
+  int b;
+  int c;
+  int d;
+};
+
 void functionToMeasure() {
   const int VECTOR_SIZE = 1000000;
-  std::vector<int> v(VECTOR_SIZE, 1);
+  std::vector<Dummy> v;
+  v.resize(VECTOR_SIZE);
 
+  Dummy currentDummy;
   for (int i = 0; i < VECTOR_SIZE; ++i) {
-    v[i] = i;
+    currentDummy.a = 1;
+    currentDummy.b = 2;
+    currentDummy.c = 3;
+    currentDummy.d = 4;
+    v.emplace_back(currentDummy);
   }
 }
 
